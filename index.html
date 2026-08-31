@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReBerth — Rest. Reimagined.</title>
+<meta name="description" content="Affordable overnight accommodation created by giving underutilized transport a new life.">
+<style>
+:root{
+  --blue:#1769aa; --blue2:#0f4f82; --green:#3c9b68; --yellow:#f4c542;
+  --ink:#17324d; --muted:#667789; --bg:#f6f9fb; --card:#fff; --line:#e3ebf1;
+  --shadow:0 14px 40px rgba(23,50,77,.10); --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:white}
+a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(227,235,241,.8)}
+.navin{height:76px;display:flex;align-items:center;gap:28px}
+.logo{height:56px;width:auto;display:block;object-fit:contain}.links{display:flex;gap:22px;margin-left:auto;font-size:14px;font-weight:600;color:#496176}.links a:hover{color:var(--blue)}
+.nav-actions{display:flex;gap:10px;margin-left:8px}.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:750;cursor:pointer;font-size:14px}
+.btn-outline{background:white;border:1px solid var(--line);color:var(--ink)}.btn-primary{background:var(--blue);color:white;box-shadow:0 8px 20px rgba(23,105,170,.22)}.btn-green{background:var(--green);color:white}
+.hero{padding:72px 0 56px;background:linear-gradient(180deg,#f8fbfd 0,#fff 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:#e9f6ef;color:#287b50;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800}
+h1{font-size:clamp(44px,5.5vw,74px);line-height:.98;letter-spacing:-3.5px;margin:18px 0;color:var(--ink)}
+h1 span{color:var(--blue)}.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:620px}
+.hero-buttons{display:flex;gap:12px;margin:26px 0 30px;flex-wrap:wrap}
+.search{background:white;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}
+.search-title{font-size:15px;font-weight:800;margin-bottom:12px}.search-row{display:grid;grid-template-columns:1.6fr 1fr 1fr .8fr auto;gap:8px}
+.field{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:#fbfdfe;min-width:0}.field label{display:block;font-size:10px;color:#789;font-weight:700;margin-bottom:4px}.field input,.field select{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:13px}
+.hero-art{height:510px;border-radius:32px;overflow:hidden;position:relative;background:linear-gradient(145deg,#d9ecf8,#eef7f2)}
+.hero-art img{width:100%;height:100%;object-fit:cover;display:block}
+.art-card{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.94);padding:16px 18px;border-radius:17px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--green)}
+section{padding:82px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 38px}.section-head h2{font-size:38px;letter-spacing:-1.5px;margin:0 0 10px}.section-head p{color:var(--muted);line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 8px 25px rgba(23,50,77,.05);transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.choice-icon,.facility-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;font-size:22px;background:#edf6fc;margin-bottom:20px}.green{background:#ebf7ef}.yellow{background:#fff7d9}
+.card h3{margin:0 0 9px;font-size:20px}.card p{color:var(--muted);line-height:1.55;font-size:14px}.card .mini-btn{margin-top:10px;color:var(--blue);font-weight:800;font-size:13px;cursor:pointer}
+.process{background:var(--bg)}.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.step{position:relative;padding:22px 14px}.step-num{font-size:12px;font-weight:900;color:var(--green);letter-spacing:1px}.step h3{font-size:17px;margin:9px 0}.step p{font-size:12px;color:var(--muted);line-height:1.5}.flow{height:2px;background:linear-gradient(90deg,var(--blue),var(--green),var(--yellow));margin:20px 5% 0}
+.facilities{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.facility{padding:22px;border:1px solid var(--line);border-radius:18px}.facility h3{font-size:16px;margin:0 0 6px}.facility p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
+.usecases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.use{min-height:230px;border-radius:22px;padding:25px;color:white;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative;background:linear-gradient(145deg,#1769aa,#0d456f)}.use:nth-child(2){background:linear-gradient(145deg,#3c9b68,#23633f)}.use:nth-child(3){background:linear-gradient(145deg,#4c7898,#294e68)}.use:nth-child(4){background:linear-gradient(145deg,#d39b16,#8b650e)}.use:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 32%)}.use>*{position:relative}.use h3{font-size:20px;margin:0 0 8px}.use p{font-size:13px;line-height:1.5;margin:0;color:rgba(255,255,255,.86)}
+.find{background:var(--bg)}.find-grid{display:grid;grid-template-columns:330px 1fr;gap:18px}.filters,.map{background:white;border:1px solid var(--line);border-radius:22px}.filters{padding:22px}.filters h3{margin-top:0}.filter{padding:14px 0;border-bottom:1px solid var(--line)}.filter:last-child{border-bottom:0}.filter label{font-size:12px;font-weight:800;display:block;margin-bottom:8px}.filter select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:white}.map{min-height:390px;position:relative;overflow:hidden;background:#eaf2ee}
+#realMap{height:100%;min-height:390px;width:100%;border-radius:22px}
+.map-shell{position:absolute;inset:0;padding:0}
+.map-overlay{position:absolute;z-index:500;left:18px;top:18px;background:rgba(255,255,255,.96);padding:9px 12px;border-radius:10px;font-size:12px;font-weight:800;box-shadow:0 5px 15px rgba(0,0,0,.12)}
+.reberth-pin{width:34px;height:34px;border-radius:50% 50% 50% 0;background:#1769aa;transform:rotate(-45deg);display:grid;place-items:center;color:#fff;font-weight:900;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.reberth-pin span{transform:rotate(45deg)}
+.leaflet-popup-content-wrapper{border-radius:14px}
+.leaflet-popup-content{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:13px;line-height:1.45}
+.popup-title{font-weight:800;font-size:15px;color:#17324d;margin-bottom:5px}
+.popup-price{color:#3c9b68;font-weight:800;margin:6px 0}
+.popup-btn{display:inline-block;background:#1769aa;color:white;padding:7px 10px;border-radius:8px;text-decoration:none;font-weight:700;font-size:11px}
+.why{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}.why h2{font-size:42px;letter-spacing:-1.7px;margin:0 0 14px}.why p{color:var(--muted);line-height:1.7}.points{display:grid;grid-template-columns:1fr 1fr;gap:14px}.point{padding:18px;border:1px solid var(--line);border-radius:16px}.point strong{display:block;margin-bottom:5px}.point span{font-size:12px;color:var(--muted);line-height:1.5}
+.purpose{background:var(--ink);color:white}.purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.purpose h2{font-size:42px;letter-spacing:-1.7px;margin:0 0 15px}.purpose p{color:#c8d6e2;line-height:1.7}.model{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.model span{padding:12px 14px;border:1px solid #365168;border-radius:12px;background:#203e55;font-size:12px;font-weight:700}.arrow{color:var(--yellow);font-weight:900}
+.partner{padding:0 0 82px}.partner-box{background:linear-gradient(135deg,#e9f6ef,#eef7fc);border:1px solid var(--line);border-radius:30px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:30px}.partner-box h2{font-size:36px;margin:0 0 10px}.partner-box p{color:var(--muted);margin:0}.partner-types{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.tag{font-size:11px;background:white;border:1px solid var(--line);padding:7px 9px;border-radius:999px}
+footer{background:#10283b;color:#c5d3de;padding:50px 0 25px}.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:35px}.foot img{height:54px;filter:brightness(0) invert(1)}.foot p{font-size:12px;line-height:1.6;max-width:300px}.foot h4{color:white;margin:0 0 13px}.foot a{display:block;font-size:12px;margin:9px 0;color:#c5d3de}.copy{border-top:1px solid #294153;margin-top:30px;padding-top:18px;font-size:11px;display:flex;justify-content:space-between}
+.modal{display:none;position:fixed;inset:0;background:rgba(10,27,40,.58);z-index:1000;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:white;border-radius:24px;max-width:500px;width:100%;padding:28px;position:relative}.close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:26px;cursor:pointer}.modal-box h2{margin:0 0 7px}.modal-box p{color:var(--muted);font-size:13px}.form{display:grid;gap:10px;margin-top:18px}.form input,.form select,.form textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}.form textarea{min-height:90px;resize:vertical}
+@media(max-width:900px){.links{display:none}.hero-grid,.why,.purpose-grid{grid-template-columns:1fr}.hero-art{height:380px}.search-row{grid-template-columns:1fr 1fr}.search-row .btn{grid-column:1/-1}.cards{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.facilities{grid-template-columns:repeat(2,1fr)}.usecases{grid-template-columns:1fr 1fr}.find-grid{grid-template-columns:1fr}.partner-box{flex-direction:column;align-items:flex-start}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){section{padding:58px 0}.hero{padding-top:45px}h1{letter-spacing:-2px}.search-row{grid-template-columns:1fr}.steps,.usecases,.facilities,.points{grid-template-columns:1fr}.hero-art{height:300px}.partner-box{padding:28px}.foot{grid-template-columns:1fr}.copy{flex-direction:column;gap:8px}}
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+
+<nav>
+  <div class="container navin">
+    <a href="#home"><img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX_PUQd6nPMa5YLHF5I8I9ZpUeElFxmfej2xx59_Sks_QTvQAXe4vxKpY66JS3sm4CihNbJOboLZfBhyphenhyphen4vTa0JiYztT1402Q3Aa_EqM8XUjhfWpZBxSfh6i_3fKVOsBTYjSdCJALwNZoqm3mnV0W52iWT9DfIFPXnbSyYZb_8A_apfJkVViTJbPUJGAEM/s6250/RB_Logo_transparent.png" alt="ReBerth"></a>
+    <div class="links">
+      <a href="#home">Home</a><a href="#find">Find a ReBerth</a><a href="#how">How It Works</a><a href="#locations">Locations</a><a href="#about">About Us</a><a href="#partner">Partner With Us</a><a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions"><button class="btn btn-outline" onclick="openModal('login')">Login</button><button class="btn btn-primary" onclick="document.querySelector('#find').scrollIntoView()">Book a ReBerth</button></div>
+  </div>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">● AFFORDABLE STAYS · REUSED ASSETS</div>
+      <h1>A place to rest.<br><span>A new life for transport.</span></h1>
+      <p>ReBerth transforms suitable unused buses and railway coaches into affordable, safe and convenient overnight accommodation.</p>
+      <div class="hero-buttons"><button class="btn btn-primary" onclick="document.querySelector('#find').scrollIntoView()">Find a ReBerth →</button><button class="btn btn-outline" onclick="openModal('partner')">Partner With Us</button></div>
+      <div class="search">
+        <div class="search-title">Where do you need to stay?</div>
+        <div class="search-row">
+          <div class="field"><label>LOCATION</label><input id="locationInput" placeholder="Srikakulam, Vizag, or Station"></div>
+          <div class="field"><label>CHECK-IN</label><input type="date"></div>
+          <div class="field"><label>CHECK-OUT</label><input type="date"></div>
+          <div class="field"><label>GUESTS</label><select><option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option></select></div>
+          <button class="btn btn-primary" onclick="searchStay()">Find</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85" alt="Modern bus used for transport accommodation">
+      <div class="art-card"><span class="dot"></span><div><strong>Rest, reimagined.</strong><br><small>Unused transport → useful stays</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><h2>What are you looking for?</h2><p>ReBerth connects people who need practical overnight accommodation with organizations that have suitable underutilized transport assets.</p></div>
+  <div class="cards">
+    <div class="card"><div class="choice-icon">⌂</div><h3>I Need a Place to Stay</h3><p>Find an affordable ReBerth near your destination, hospital, station or tourist spot.</p><div class="mini-btn" onclick="document.querySelector('#find').scrollIntoView()">Find a ReBerth →</div></div>
+    <div class="card"><div class="choice-icon green">↻</div><h3>I Have an Idle Vehicle</h3><p>Turn an underutilized bus or coach into a revenue-generating accommodation facility.</p><div class="mini-btn" onclick="openModal('partner')">Partner With Us →</div></div>
+    <div class="card"><div class="choice-icon yellow">i</div><h3>I Want to Know About ReBerth</h3><p>Learn how underutilized transport can be transformed into useful accommodation.</p><div class="mini-btn" onclick="document.querySelector('#about').scrollIntoView()">Explore ReBerth →</div></div>
+  </div>
+</div>
+</section>
+
+<section class="process" id="how">
+<div class="container">
+  <div class="section-head"><h2>How ReBerth Works</h2><p>We give unused transport a new purpose.</p></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h3>Identify</h3><p>Find suitable underutilized or retired buses and railway coaches.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Transform</h3><p>Refurbish the interior and convert it into functional accommodation.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Equip</h3><p>Add sleeping berths, washrooms, ventilation, lighting and security.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Locate</h3><p>Place facilities where demand for affordable stays is high.</p></div>
+    <div class="step"><div class="step-num">05</div><h3>Operate</h3><p>Manage bookings, cleaning, maintenance and customer service.</p></div>
+    <div class="step"><div class="step-num">06</div><h3>Rest</h3><p>Customers receive a practical and convenient place to stay.</p></div>
+  </div>
+  <div class="flow"></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><h2>Essential Facilities</h2><p>Designed around the basic requirements for a comfortable overnight stay.</p></div>
+  <div class="facilities">
+    <div class="facility"><div class="facility-icon">▰</div><h3>Sleeping Berth</h3><p>Dedicated sleeping space for each customer.</p></div>
+    <div class="facility"><div class="facility-icon green">♧</div><h3>Washroom</h3><p>Basic sanitary facilities within the facility.</p></div>
+    <div class="facility"><div class="facility-icon yellow">◌</div><h3>Ventilation</h3><p>Fans and adequate airflow for the accommodation area.</p></div>
+    <div class="facility"><div class="facility-icon">☼</div><h3>Lighting</h3><p>Basic interior lighting for safe use.</p></div>
+    <div class="facility"><div class="facility-icon green">✓</div><h3>Security</h3><p>Controlled access and basic safety measures.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="locations">
+<div class="container">
+  <div class="section-head"><h2>Where ReBerth Can Help</h2><p>Put practical overnight accommodation close to the places people actually need it.</p></div>
+  <div class="usecases">
+    <div class="use"><h3>Near Hospitals</h3><p>Affordable overnight accommodation for patient attendants and families.</p></div>
+    <div class="use"><h3>Near Railway Stations</h3><p>A convenient place to rest during late arrivals, early departures or long waits.</p></div>
+    <div class="use"><h3>Near Bus Terminals</h3><p>Short-term accommodation between routes or overnight journeys.</p></div>
+    <div class="use"><h3>Near Tourist Destinations</h3><p>Affordable accommodation for travelers who primarily need a place to sleep.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="find" id="find">
+<div class="container">
+  <div class="section-head"><h2>Find a ReBerth Near You</h2><p>Search by destination and narrow your options using practical filters.</p></div>
+  <div class="find-grid">
+    <div class="filters">
+      <h3>Search & Filters</h3>
+      <div class="field"><label>LOCATION</label><input id="findLocation" placeholder="e.g. Srikakulam"></div>
+      <div class="filter"><label>Distance</label><select><option>Within 5 km</option><option>Within 10 km</option><option>Within 25 km</option></select></div>
+      <div class="filter"><label>Price</label><select><option>Any price</option><option>Under ₹300</option><option>₹300–₹500</option><option>₹500+</option></select></div>
+      <div class="filter"><label>Location Type</label><select id="typeFilter" onchange="filterMap()"><option value="All">All</option><option value="Station">Railway Station</option><option value="Hospital">Hospital</option><option value="Bus Terminal">Bus Terminal</option></select></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:16px" onclick="filterMap()">Search ReBerths</button>
+    </div>
+    <div class="map">
+      <div class="map-shell"><div id="realMap"></div></div>
+      <div class="map-overlay">Available ReBerth facilities</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="about">
+<div class="container why">
+  <div><div class="eyebrow">WHY REBERTH</div><h2>Practical accommodation, without building everything from scratch.</h2><p>ReBerth connects two problems: the need for affordable overnight accommodation and the underutilization of suitable transport assets.</p></div>
+  <div class="points">
+    <div class="point"><strong>Affordable</strong><span>Pay for a practical place to sleep rather than an entire conventional hotel room.</span></div>
+    <div class="point"><strong>Convenient</strong><span>Facilities can be located close to hospitals, transport hubs and tourist destinations.</span></div>
+    <div class="point"><strong>Practical</strong><span>Essential facilities required for an overnight stay.</span></div>
+    <div class="point"><strong>Resource Efficient</strong><span>Repurposes suitable existing transport assets instead of relying entirely on new construction.</span></div>
+    <div class="point"><strong>Accessible</strong><span>Designed for people who need basic, convenient overnight accommodation.</span></div>
+  </div>
+</div>
+</section>
+
+<section class="purpose">
+<div class="container purpose-grid">
+  <div><h2>We don't just build more rooms. We reuse what already exists.</h2><p>ReBerth gives suitable buses and railway coaches a second purpose while creating affordable places to rest near locations with real accommodation demand.</p></div>
+  <div class="model"><span>Underutilized transport</span><b class="arrow">→</b><span>Conversion</span><b class="arrow">→</b><span>Sleeping facility</span><b class="arrow">→</b><span>Affordable stays</span></div>
+</div>
+</section>
+
+<section class="partner" id="partner">
+<div class="container">
+  <div class="partner-box">
+    <div><h2>Have an Underutilized Bus or Coach?</h2><p>Give your asset a second life with ReBerth.</p><div class="partner-types"><span class="tag">State RTCs</span><span class="tag">Private bus operators</span><span class="tag">Fleet owners</span><span class="tag">Transport companies</span><span class="tag">Railway organizations</span><span class="tag">Hospitals</span><span class="tag">Tourism operators</span><span class="tag">Location owners</span></div></div>
+    <button class="btn btn-green" onclick="openModal('partner')">Partner With ReBerth →</button>
+  </div>
+</div>
+</section>
+</main>
+
+<footer id="contact">
+<div class="container foot">
+  <div><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiX_PUQd6nPMa5YLHF5I8I9ZpUeElFxmfej2xx59_Sks_QTvQAXe4vxKpY66JS3sm4CihNbJOboLZfBhyphenhyphen4vTa0JiYztT1402Q3Aa_EqM8XUjhfWpZBxSfh6i_3fKVOsBTYjSdCJALwNZoqm3mnV0W52iWT9DfIFPXnbSyYZb_8A_apfJkVViTJbPUJGAEM/s6250/RB_Logo_transparent.png" alt="ReBerth"><p>A place to rest. A new life for transport.</p></div>
+  <div><h4>Explore</h4><a href="#find">Find a ReBerth</a><a href="#how">How It Works</a><a href="#locations">Locations</a></div>
+  <div><h4>Company</h4><a href="#about">About Us</a><a href="#partner">Partner With Us</a><a href="#contact">Contact</a></div>
+  <div><h4>Support</h4><a href="#" onclick="openModal('support');return false">Customer Support</a><a href="#" onclick="openModal('partner');return false">Business Enquiries</a><a href="#" onclick="openModal('support');return false">Privacy & Terms</a></div>
+</div>
+<div class="container copy"><span>© 2026 ReBerth. All rights reserved.</span><span>Rest. Reimagined.</span></div>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-box"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle"></h2><p id="modalDesc"></p><form class="form" onsubmit="submitForm(event)"><input id="name" placeholder="Name / Organization" required><input type="tel" placeholder="Phone" required><input type="email" placeholder="Email" required><select id="type"><option>Bus / Fleet Owner</option><option>Transport Organization</option><option>Railway / Coach Owner</option><option>Property / Location Owner</option><option>Hospital</option><option>Tourism Business</option><option>Customer Support</option></select><textarea placeholder="Additional information"></textarea><button class="btn btn-primary">Submit</button></form></div>
+</div>
+
+<script>
+// Static Data Model for Static Site Hosting
+const STATIC_FACILITIES = [
+  { lat: 18.2960, lon: 83.8970, title: 'ReBerth — Srikakulam Station', location: 'Near Srikakulam Road Railway Station', price: '₹299', type: 'Station', color: '#1769aa' },
+  { lat: 18.3008, lon: 83.9005, title: 'ReBerth — City Stay', location: 'Srikakulam City Centre', price: '₹349', type: 'Hospital', color: '#3c9b68' },
+  { lat: 18.2895, lon: 83.9102, title: 'ReBerth — Transit Point', location: 'Near RTC Bus Complex', price: '₹279', type: 'Bus Terminal', color: '#d39b16' }
+];
+
+let reberthMap;
+let markersLayer;
+
+function openModal(type){
+  const m=document.getElementById('modal'),t=document.getElementById('modalTitle'),d=document.getElementById('modalDesc');
+  if(type==='partner'){t.textContent='Become a ReBerth Partner';d.textContent='Tell us about your vehicle, organization or location.'}
+  else if(type==='login'){t.textContent='Login';d.textContent='Customer and partner portal interface.'}
+  else {t.textContent='Contact ReBerth';d.textContent='Send your enquiry and the ReBerth team will reach out.'}
+  m.classList.add('show');
+}
+
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+function submitForm(e){
+  e.preventDefault();
+  closeModal();
+  alert('Thank you for reaching out! Your submission has been logged locally.');
+}
+
+function searchStay(){
+  const v=document.getElementById('locationInput').value.trim();
+  document.getElementById('findLocation').value=v;
+  document.querySelector('#find').scrollIntoView();
+  filterMap();
+}
+
+function reberthIcon(color="#1769aa"){
+  return L.divIcon({
+    className:"",
+    html:`<div class="reberth-pin" style="background:${color}"><span>R</span></div>`,
+    iconSize:[34,34],iconAnchor:[10,30],popupAnchor:[7,-27]
+  });
+}
+
+function initMap(){
+  reberthMap=L.map('realMap').setView([18.2969,83.8978],13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19,
+    attribution:'&copy; OpenStreetMap contributors'
+  }).addTo(reberthMap);
+  markersLayer=L.layerGroup().addTo(reberthMap);
+  renderMarkers(STATIC_FACILITIES);
+}
+
+function renderMarkers(items){
+  markersLayer.clearLayers();
+  items.forEach(item => {
+    const marker = L.marker([item.lat, item.lon], {icon: reberthIcon(item.color)});
+    marker.bindPopup(`
+      <div class="popup-title">${item.title}</div>
+      <div>${item.location}</div>
+      <div class="popup-price">${item.price} / night</div>
+      <a href="#find" class="popup-btn" onclick="alert('Booking feature selected for ${item.title}')">View ReBerth</a>
+    `);
+    marker.addTo(markersLayer);
+  });
+}
+
+function filterMap(){
+  const query = document.getElementById('findLocation').value.toLowerCase().trim();
+  const selectedType = document.getElementById('typeFilter').value;
+
+  const filtered = STATIC_FACILITIES.filter(item => {
+    const matchesQuery = !query || item.title.toLowerCase().includes(query) || item.location.toLowerCase().includes(query);
+    const matchesType = selectedType === 'All' || item.type === selectedType;
+    return matchesQuery && matchesType;
+  });
+
+  renderMarkers(filtered);
+
+  if(filtered.length > 0){
+    reberthMap.setView([filtered[0].lat, filtered[0].lon], 13);
+  } else if (query) {
+    alert('No local ReBerth locations match your search query. Try "Srikakulam" or select "All".');
+  }
+}
+
+window.addEventListener('load',initMap);
+window.onclick=e=>{if(e.target.id==='modal')closeModal()}
+</script>
+</body>
+</html>
